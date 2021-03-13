@@ -14,9 +14,14 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 
-source = "http://www.google.com/"
+sourcegoogle = "http://www.google.com/"
+sourceduckduckgo = "http://www.duckduckgo.com"
+sourcebing = "http://www.bing.com"
+sourceswisscows= "http://onesearch.com"
+
+#duckduckgo Measurement
 driver = webdriver.Firefox()
-driver.get(source)
+driver.get(sourceduckduckgo)
 
 navigationStart = driver.execute_script("return window.performance.timing.navigationStart")
 responseStart = driver.execute_script("return window.performance.timing.responseStart")
@@ -25,7 +30,54 @@ domComplete = driver.execute_script("return window.performance.timing.domComplet
 backendPerformance = responseStart - navigationStart
 frontendPerformance = domComplete - responseStart
 
-print ("Back End: %s" % backendPerformance)
-print ("Front End: %s" % frontendPerformance)
+print ("duckduckgo: Back End: %s" % backendPerformance)
+print ("duckduckgo: Front End: %s" % frontendPerformance)
+
+# Google Measurement
+driver.quit()
+
+driver = webdriver.Firefox()
+driver.get(sourcegoogle)
+
+navigationStart = driver.execute_script("return window.performance.timing.navigationStart")
+responseStart = driver.execute_script("return window.performance.timing.responseStart")
+domComplete = driver.execute_script("return window.performance.timing.domComplete")
+
+backendPerformance = responseStart - navigationStart
+frontendPerformance = domComplete - responseStart
+
+print ("google: Back End: %s" % backendPerformance)
+print ("google: Front End: %s" % frontendPerformance)
 
 driver.quit()
+
+driver = webdriver.Firefox()
+driver.get(sourcebing)
+
+navigationStart = driver.execute_script("return window.performance.timing.navigationStart")
+responseStart = driver.execute_script("return window.performance.timing.responseStart")
+domComplete = driver.execute_script("return window.performance.timing.domComplete")
+
+backendPerformance = responseStart - navigationStart
+frontendPerformance = domComplete - responseStart
+
+print ("sourcebing: Back End: %s" % backendPerformance)
+print ("sourcebing: Front End: %s" % frontendPerformance)
+
+driver.quit()
+
+driver = webdriver.Firefox()
+driver.get(sourcebing)
+
+navigationStart = driver.execute_script("return window.performance.timing.navigationStart")
+responseStart = driver.execute_script("return window.performance.timing.responseStart")
+domComplete = driver.execute_script("return window.performance.timing.domComplete")
+
+backendPerformance = responseStart - navigationStart
+frontendPerformance = domComplete - responseStart
+
+print ("sourceswisscows: Back End: %s" % backendPerformance)
+print ("sourceswisscows Front End: %s" % frontendPerformance)
+
+driver.quit()
+
